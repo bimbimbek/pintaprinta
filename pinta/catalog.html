@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PintaPrinta | Каталог</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Montserrat:wght@600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"></script>
+</head>
+<body>
+      <!-- Шапка -->
+      <header class="header">
+        <nav class="nav">
+            <a href="index.html" class="logo" style="text-decoration: none; color: inherit;">
+                <img src="pics/logo.png" alt="PintaPrinta logo" style="height: 3em; vertical-align: middle; margin-right: 1px;">
+                <span style="display: inline-block; text-align: center; font-size: 1.3em; color: black;">PintaPrinta</span>
+            </a>
+            <div class="nav-links">
+                <a href="index.html" class="active" style="text-decoration: none; color: inherit;">Главная</a>
+                <a href="catalog.html" style="text-decoration: none; color: inherit;">Каталог</a>
+                <a href="cart.html" style="text-decoration: none; color: inherit;">Корзина</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Каталог -->
+    <section class="catalog">
+        <div class="container">
+            <h2>Каталог товаров</h2>
+            <div class="filters">
+                <button class="filter-btn active" data-filter="all">Все</button>
+                <button class="filter-btn" data-filter="tshirts">Футболки</button>
+                <button class="filter-btn" data-filter="hoodies">Толстовки</button>
+                <button class="filter-btn" data-filter="mugs">Кружки</button>
+                <button class="filter-btn" data-filter="bags">Сумки</button>
+                <button class="filter-btn" data-filter="caps">Кепки</button>
+                <button class="filter-btn" data-filter="sweaters">Свитшоты</button>
+                <button class="filter-btn" data-filter="pants">Штаны</button>
+                <button class="filter-btn" data-filter="socks">Носки</button>
+                <button class="filter-btn" data-filter="jackets">Куртки</button>
+                <button class="filter-btn" data-filter="keychains">Брелоки</button>
+                <button class="filter-btn" data-filter="notebooks">Канцелярия</button>
+            </div>
+            <div class="products-grid">
+                <!-- Товар 1 -->
+                <div class="product-card" data-category="tshirts">
+                    <div class="product-image">
+                        <a href="#" class="product-link">
+                            <img src="pics/shirt.png" alt="Футболка">
+                        </a>
+                        <div class="product-overlay">
+                            <button class="btn design-button" data-modal="designModal" data-product="tshirt">Создать дизайн</button>
+                        </div>
+                    </div>
+                    <h3 class="product-title">Футболка с принтом</h3>
+                    <p class="product-price">от ₽1000</p>
+                    <button class="btn add-to-cart">В корзину</button>
+                </div>
+
+                <!-- Товар 2 -->
+                <div class="product-card" data-category="hoodies">
+                    <div class="product-image">
+                        <img src="pics/hoodie.png" alt="Толстовка">
+                        <div class="product-overlay">
+                            <button class="btn quick-view">Быстрый просмотр</button>
+                        </div>
+                    </div>
+                    <h3 class="product-title">Толстовка с капюшоном</h3>
+                    <p class="product-price">от ₽1500</p>
+                    <button class="btn add-to-cart">В корзину</button>
+                </div>
+
+                <!-- Товар 3 -->
+                <div class="product-card" data-category="mugs">
+                    <div class="product-image">
+                        <img src="pics/mug.png" alt="Кружка">
+                        <div class="product-overlay">
+                            <button class="btn quick-view">Быстрый просмотр</button>
+                        </div>
+                    </div>
+                    <h3 class="product-title">Кружка с логотипом</h3>
+                    <p class="product-price">от ₽500</p>
+                    <button class="btn add-to-cart">В корзину</button>
+                </div>
+
+
+                <!-- Товар 4 -->
+                <div class="product-card" data-category="bags">
+                    <div class="product-image">
+                        <img src="pics/shopper.png" alt="Сумка">
+                        <div class="product-overlay">
+                            <button class="btn quick-view">Быстрый просмотр</button>
+                        </div>
+                    </div>
+                    <h3 class="product-title">Эко-сумка с принтом</h3>
+                    <p class="product-price">от ₽800</p>
+                    <button class="btn add-to-cart">В корзину</button>
+                </div>
+
+                <!-- Товар 5 -->
+                <div class="product-card" data-category="caps">
+                    <div class="product-image">
+                        <img src="pics/cap.png" alt="Кепка">
+                        <div class="product-overlay">
+                            <button class="btn quick-view">Быстрый просмотр</button>
+                        </div>
+                    </div>
+                    <h3 class="product-title">Кепка с вышивкой</h3>
+                    <p class="product-price">от ₽700</p>
+                    <button class="btn add-to-cart">В корзину</button>
+                </div>
+
+                <!-- Товар 6 -->
+                <div class="product-card" data-category="sweaters">
+                    <div class="product-image">
+                        <img src="pics/sweater.png" alt="Свитшот">
+                        <div class="product-overlay">
+                            <button class="btn design-button" data-product="sweater">Создать дизайн</button>
+                        </div>
+                    </div>
+                    <h3 class="product-title">Свитшот с принтом</h3>
+                    <p class="product-price">от ₽1800</p>
+                    <button class="btn add-to-cart">В корзину</button>
+                </div>
+
+                <!-- Товар 7 -->
+                <div class="product-card" data-category="pants">
+                    <div class="product-image">
+                        <img src="pics/pants.png" alt="Штаны">
+                        <div class="product-overlay">
+                            <button class="btn design-button" data-product="pants">Создать дизайн</button>
+                        </div>
+                    </div>
+                    <h3 class="product-title">Штаны с принтом</h3>
+                    <p class="product-price">от ₽2000</p>
+                    <button class="btn add-to-cart">В корзину</button>
+                </div>
+
+                <!-- Товар 8 -->
+                <div class="product-card" data-category="socks">
+                    <div class="product-image">
+                        <img src="pics/socks.png" alt="Носки">
+                        <div class="product-overlay">
+                            <button class="btn design-button" data-product="socks">Создать дизайн</button>
+                        </div>
+                    </div>
+                    <h3 class="product-title">Носки с принтом</h3>
+                    <p class="product-price">от ₽400</p>
+                    <button class="btn add-to-cart">В корзину</button>
+                </div>
+
+                <!-- Товар 9 -->
+                <div class="product-card" data-category="jackets">
+                    <div class="product-image">
+                        <img src="pics/jacket.png" alt="Куртка">
+                        <div class="product-overlay">
+                            <button class="btn design-button" data-product="jacket">Создать дизайн</button>
+                        </div>
+                    </div>
+                    <h3 class="product-title">Куртка с принтом</h3>
+                    <p class="product-price">от ₽3000</p>
+                    <button class="btn add-to-cart">В корзину</button>
+                </div>
+
+                <!-- Товар 10 -->
+                <div class="product-card" data-category="keychains">
+                    <div class="product-image">
+                        <img src="pics/keychain.png" alt="Брелок">
+                        <div class="product-overlay">
+                            <button class="btn design-button" data-product="keychain">Создать дизайн</button>
+                        </div>
+                    </div>
+                    <h3 class="product-title">Брелок с принтом</h3>
+                    <p class="product-price">от ₽300</p>
+                    <button class="btn add-to-cart">В корзину</button>
+                </div>
+
+                <!-- Товар 11 -->
+                <div class="product-card" data-category="notebooks">
+                    <div class="product-image">
+                        <img src="pics/notebook.png" alt="Блокнот">
+                        <div class="product-overlay">
+                            <button class="btn design-button" data-product="notebook">Создать дизайн</button>
+                        </div>
+                    </div>
+                    <h3 class="product-title">Блокнот с принтом</h3>
+                    <p class="product-price">от ₽600</p>
+                    <button class="btn add-to-cart">В корзину</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Модальное окно товара -->
+    <div class="modal" id="product-modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="modal-body">
+                <div class="modal-image">
+                    <img src="https://via.placeholder.com/400" alt="Товар">
+                </div>
+                <div class="modal-info">
+                    <h2 id="modal-title">Футболка с принтом</h2>
+                    <p id="modal-price">от ₽1000</p>
+                    <p id="modal-description">Мягкая хлопковая футболка с уникальным дизайном. Доступна в различных размерах и цветах.</p>
+                    <div class="modal-actions">
+                        <button class="btn add-to-cart">Добавить в корзину</button>
+                        <button class="btn close-modal">Закрыть</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Подвал -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>О компании</h3>
+                    <p>PintaPrinta — ваш надежный партнер в создании уникальных принтов.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Контакты</h3>
+                    <p>Телефон: +7 (999) 123-45-67</p>
+                    <p>Email: info@pintaprinta.ru</p>
+                    <p>Адрес: г. Москва, ул. Примерная, 123</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Мы в соцсетях</h3>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-vk"></i></a>
+                        <a href="#"><i class="fab fa-telegram"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <p class="footer-copyright">© 2024 PintaPrinta. Все права защищены.</p>
+        </div>
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Обработчик для кнопки "Добавить в корзину"
+            document.querySelectorAll('.add-to-cart').forEach(button => {
+                button.addEventListener('click', () => {
+                    const product = button.getAttribute('data-product');
+                    const productCard = button.closest('.product-card');
+                    const productTitle = productCard.querySelector('.product-title').textContent;
+                    const productPrice = productCard.querySelector('.product-price').textContent;
+                    const productImage = productCard.querySelector('img').src;
+
+                    // Добавляем товар в корзину
+                    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+                    const existingItem = cart.find(item => item.title === productTitle);
+
+                    if (existingItem) {
+                        existingItem.quantity += 1;
+                    } else {
+                        cart.push({
+                            title: productTitle,
+                            price: productPrice,
+                            image: productImage,
+                            quantity: 1
+                        });
+                    }
+
+                    localStorage.setItem('cart', JSON.stringify(cart));
+
+                    // Меняем кнопку на "Перейти в корзину"
+                    button.textContent = 'Перейти в корзину';
+                    button.classList.add('added-to-cart');
+                    button.removeEventListener('click', addToCartHandler);
+                    button.addEventListener('click', () => {
+                        window.location.href = 'cart.html';
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>

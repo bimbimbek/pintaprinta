@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PintaPrinta | Корзина</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Montserrat:wght@600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"></script>
+</head>
+<body>
+    <!-- Шапка -->
+    <header class="header">
+        <nav class="nav">
+            <a href="index.html" class="logo" style="text-decoration: none; color: inherit;">
+                <img src="pics/logo.png" alt="PintaPrinta logo" style="height: 3em; vertical-align: middle; margin-right: 1px;">
+                <span style="display: inline-block; text-align: center; font-size: 1.3em; color: black;">PintaPrinta</span>
+            </a>
+            <div class="nav-links">
+                <a href="index.html" style="text-decoration: none; color: inherit;">Главная</a>
+                <a href="catalog.html" style="text-decoration: none; color: inherit;">Каталог</a>
+                <a href="cart.html" class="active" style="text-decoration: none; color: inherit;">Корзина</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Корзина -->
+    <section class="cart">
+        <div class="container">
+            <h2>Ваша корзина</h2>
+            <div class="cart-items" id="cart-items">
+                <!-- Товары будут добавляться сюда динамически -->
+            </div>
+            <div class="cart-summary">
+                <h3>Итого: <span id="total-price">₽0</span></h3>
+                <div class="cart-actions">
+                    <button class="btn continue-shopping" onclick="window.location.href='catalog.html'">Продолжить покупки</button>
+                    <button class="btn checkout" id="checkout-btn">Оформить заказ</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Модальное окно оформления заказа -->
+    <div class="modal" id="checkout-modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Оформление заказа</h2>
+            <form id="checkout-form">
+                <div class="form-group">
+                    <label for="name">Имя:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Электронная почта:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Номер телефона:</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+                <div class="form-group">
+                    <input type="checkbox" id="terms" name="terms" required>
+                    <label for="terms">Я ознакомлен с правилами и условиями</label>
+                </div>
+                <button type="submit" class="btn">Оплатить</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Подвал -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>О компании</h3>
+                    <p>PintaPrinta — ваш надежный партнер в создании уникальных принтов.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Контакты</h3>
+                    <p>Телефон: +7 (999) 123-45-67</p>
+                    <p>Email: info@pintaprinta.ru</p>
+                    <p>Адрес: г. Москва, ул. Примерная, 123</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Мы в соцсетях</h3>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-vk"></i></a>
+                        <a href="#"><i class="fab fa-telegram"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <p class="footer-copyright">© 2024 PintaPrinta. Все права защищены.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const cartItemsContainer = document.getElementById('cart-items');
+            const totalPriceElement = document.getElementById('total-price');
+            const checkoutModal = document.getElementById('checkout-modal');
+            const checkoutBtn = document.getElementById('checkout-btn');
+            const closeModalBtn = document.querySelector('#checkout-modal .close');
+
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+            // Функция для отображения товаров в корзине
+            function renderCart() {
+                cartItemsContainer.innerHTML = '';
+                let totalPrice = 0;
+
+                cart.forEach((item, index) => {
+                    const cartItem = document.createElement('div');
+                    cartItem.classList.add('cart-item');
+
+                    cartItem.innerHTML = `
+                        <div class="item-image">
+                            <img src="${item.image}" alt="${item.title}">
+                        </div>
+                        <div class="item-info">
+                            <h3>${item.title}</h3>
+                            <p>${item.description}</p>
+                            <p class="item-price">${item.price}</p>
+                            <div class="quantity-controls">
+                                <button class="btn quantity-decrease" data-index="${index}">-</button>
+                                <span class="quantity">${item.quantity}</span>
+                                <button class="btn quantity-increase" data-index="${index}">+</button>
+                            </div>
+                        </div>
+                        <div class="item-actions">
+                            <button class="btn remove-item" data-index="${index}">Удалить</button>
+                        </div>
+                    `;
+
+                    cartItemsContainer.appendChild(cartItem);
+
+                    // Обновляем общую стоимость
+                    totalPrice += parseFloat(item.price.replace('₽', '')) * item.quantity;
+                });
+
+                totalPriceElement.textContent = `₽${totalPrice.toFixed(2)}`;
+            }
+
+            // Функция для обновления количества товара
+            function updateQuantity(index, change) {
+                cart[index].quantity += change;
+                if (cart[index].quantity < 1) {
+                    cart[index].quantity = 1;
+                }
+                localStorage.setItem('cart', JSON.stringify(cart));
+                renderCart();
+            }
+
+            // Функция для удаления товара
+            function removeItem(index) {
+                cart.splice(index, 1);
+                localStorage.setItem('cart', JSON.stringify(cart));
+                renderCart();
+            }
+
+            // Обработчики событий для изменения количества и удаления товаров
+            cartItemsContainer.addEventListener('click', (e) => {
+                if (e.target.classList.contains('quantity-decrease')) {
+                    const index = e.target.getAttribute('data-index');
+                    updateQuantity(index, -1);
+                } else if (e.target.classList.contains('quantity-increase')) {
+                    const index = e.target.getAttribute('data-index');
+                    updateQuantity(index, 1);
+                } else if (e.target.classList.contains('remove-item')) {
+                    const index = e.target.getAttribute('data-index');
+                    removeItem(index);
+                }
+            });
+            function renderCart() {
+    cartItemsContainer.innerHTML = '';
+    let totalPrice = 0;
+
+    cart.forEach((item, index) => {
+        const cartItem = document.createElement('div');
+        cartItem.classList.add('cart-item');
+
+        // Извлекаем числовую часть из строки с ценой
+        const price = parseFloat(item.price.replace(/[^0-9.]/g, ''));
+
+        cartItem.innerHTML = `
+            <div class="item-image">
+                <img src="${item.image}" alt="${item.title}">
+            </div>
+            <div class="item-info">
+                <h3>${item.title}</h3>
+                <p>${item.description}</p>
+                <p class="item-price">${item.price}</p>
+                <div class="quantity-controls">
+                    <button class="btn quantity-decrease" data-index="${index}">-</button>
+                    <span class="quantity">${item.quantity}</span>
+                    <button class="btn quantity-increase" data-index="${index}">+</button>
+                </div>
+            </div>
+            <div class="item-actions">
+                <button class="btn remove-item" data-index="${index}">Удалить</button>
+            </div>
+        `;
+
+        cartItemsContainer.appendChild(cartItem);
+
+        // Обновляем общую стоимость
+        totalPrice += price * item.quantity;
+    });
+
+    totalPriceElement.textContent = `₽${totalPrice.toFixed(2)}`;
+}
+            // Открытие модального окна оформления заказа
+            checkoutBtn.addEventListener('click', () => {
+                checkoutModal.style.display = 'flex';
+            });
+
+            // Закрытие модального окна
+            closeModalBtn.addEventListener('click', () => {
+                checkoutModal.style.display = 'none';
+            });
+
+            // Обработка формы оформления заказа
+            document.getElementById('checkout-form').addEventListener('submit', (e) => {
+                e.preventDefault();
+                alert('Заказ оформлен!');
+                checkoutModal.style.display = 'none';
+                cart = [];
+                localStorage.setItem('cart', JSON.stringify(cart));
+                renderCart();
+            });
+
+            // Инициализация корзины при загрузке страницы
+            renderCart();
+        });
+    </script>
+</body>
+</html>

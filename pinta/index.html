@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PintaPrinta | Главная</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Montserrat:wght@600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"></script>
+</head>
+<body>
+    <!-- Шапка -->
+    <header class="header">
+        <nav class="nav">
+            <a href="index.html" class="logo" style="text-decoration: none; color: inherit;">
+                <img src="pics/logo.png" alt="PintaPrinta logo" style="height: 3em; vertical-align: middle; margin-right: 1px;">
+                <span style="display: inline-block; text-align: center; font-size: 1.3em; color: black;">PintaPrinta</span>
+            </a>
+            <div class="nav-links">
+                <a href="index.html" class="active" style="text-decoration: none; color: inherit;">Главная</a>
+                <a href="catalog.html" style="text-decoration: none; color: inherit;">Каталог</a>
+                <a href="cart.html" style="text-decoration: none; color: inherit;">Корзина</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Герой-секция -->
+    <section class="hero" style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('pics/bg.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat;">
+        <div class="hero-content">
+            <h1 style="font-size: 3em;">PintaPrinta — Печать на любой поверхности</h1>
+            <p style="font-size: 1.5em;">Создайте уникальный дизайн для футболок, кружек, сумок и многого другого!</p>
+            <a href="catalog.html" class="btn" style="font-size: 1.5em; padding: 15px 30px;">Перейти в каталог</a>
+        </div>
+    </section>
+    </section>
+    <!-- Отзывы клиентов -->
+    <section class="testimonials">
+        <div class="container">
+            <h2>Отзывы наших клиентов</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial">
+                    <img src="pics/anna.png" alt="Клиент 1">
+                    <h3>Анна</h3>
+                    <p>"Отличное качество печати! Заказала футболку с собственным дизайном, всё сделали быстро и аккуратно."</p>
+                </div>
+                <div class="testimonial">
+                    <img src="pics/ivan.png" alt="Клиент 2">
+                    <h3>Иван</h3>
+                    <p>"Заказывал кружки для офиса. Все довольны! Быстрая доставка и отличный сервис."</p>
+                </div>
+                <div class="testimonial">
+                    <img src="pics/maria.png" alt="Клиент 3">
+                    <h3>Мария</h3>
+                    <p>"Спасибо за качественные сумки! Дизайн получился именно таким, как я хотела."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Подписка на рассылку -->
+    <section class="newsletter">
+        <div class="container">
+            <h2>Подпишитесь на рассылку</h2>
+            <p>Получайте эксклюзивные предложения и новости первыми!</p>
+            <form class="newsletter-form">
+                <input type="email" placeholder="Введите ваш email" required>
+                <button type="submit" class="btn">Подписаться</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Кнопка "Наверх" -->
+    <button id="scroll-to-top" class="scroll-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Кнопки "Поделиться" -->
+    <div class="social-share">
+        <a href="#" class="share-btn"><i class="fab fa-vk"></i></a>
+        <a href="#" class="share-btn"><i class="fab fa-telegram"></i></a>
+        <a href="#" class="share-btn"><i class="fab fa-instagram"></i></a>
+    </div>
+
+    <!-- Подвал -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>О компании</h3>
+                    <p>PintaPrinta — ваш надежный партнер в создании уникальных принтов.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Контакты</h3>
+                    <p>Телефон: +7 (999) 123-45-67</p>
+                    <p>Email: info@pintaprinta.ru</p>
+                    <p>Адрес: г. Москва, ул. Примерная, 123</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Мы в соцсетях</h3>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-vk"></i></a>
+                        <a href="#"><i class="fab fa-telegram"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <p class="footer-copyright">© 2024 PintaPrinta. Все права защищены.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
