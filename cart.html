@@ -234,6 +234,44 @@
             // Инициализация корзины при загрузке страницы
             renderCart();
         });
+        const response = await fetch('https://pintaprinta.vercel.app/create-payment', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ amount, description }),
+});
+// Обработчик для кнопки "Оплатить"
+checkoutBtn.addEventListener('click', async () => {
+    // Получаем общую сумму из корзины
+    const totalPrice = parseFloat(totalPriceElement.textContent.replace('₽', ''));
+
+    // Отправляем запрос на сервер для создания платежа
+    try {
+        const response = await fetch('https://pintaprinta.vercel.app/create-paymentt', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                amount: totalPrice, // Передаем общую сумму
+                description: 'Оплата заказа из корзины', // Описание платежа
+            }),
+        });
+
+        const data = await response.json();
+
+        if (data.paymentUrl) {
+            // Перенаправляем пользователя на страницу оплаты
+            window.location.href = data.paymentUrl;
+        } else {
+            alert('Ошибка при создании платежа');
+        }
+    } catch (error) {
+        console.error('Ошибка:', error);
+        alert('Ошибка при создании платежа');
+    }
+});
     </script>
 </body>
 </html>
