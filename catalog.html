@@ -241,42 +241,44 @@
     </footer>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // Обработчик для кнопки "Добавить в корзину"
-            document.querySelectorAll('.add-to-cart').forEach(button => {
-                button.addEventListener('click', () => {
-                    const product = button.getAttribute('data-product');
-                    const productCard = button.closest('.product-card');
-                    const productTitle = productCard.querySelector('.product-title').textContent;
-                    const productPrice = productCard.querySelector('.product-price').textContent;
-                    const productImage = productCard.querySelector('img').src;
+    // Обработчик для кнопки "Добавить в корзину"
+    document.querySelectorAll('.add-to-cart').forEach(button => {
+        button.addEventListener('click', () => {
+            const product = button.getAttribute('data-product');
+            const productCard = button.closest('.product-card');
+            const productTitle = productCard.querySelector('.product-title').textContent;
+            const productPrice = productCard.querySelector('.product-price').textContent;
+            const productImage = productCard.querySelector('img').src;
 
-                    // Добавляем товар в корзину
-                    let cart = JSON.parse(localStorage.getItem('cart')) || [];
-                    const existingItem = cart.find(item => item.title === productTitle);
+            // Добавляем товар в корзину
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const existingItem = cart.find(item => item.title === productTitle);
 
-                    if (existingItem) {
-                        existingItem.quantity += 1;
-                    } else {
-                        cart.push({
-                            title: productTitle,
-                            price: productPrice,
-                            image: productImage,
-                            quantity: 1
-                        });
-                    }
-
-                    localStorage.setItem('cart', JSON.stringify(cart));
-
-                    // Меняем кнопку на "Перейти в корзину"
-                    button.textContent = 'Перейти в корзину';
-                    button.classList.add('added-to-cart');
-                    button.removeEventListener('click', addToCartHandler);
-                    button.addEventListener('click', () => {
-                        window.location.href = 'cart.html';
-                    });
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({
+                    title: productTitle,
+                    price: productPrice,
+                    image: productImage,
+                    quantity: 1
                 });
+            }
+
+            localStorage.setItem('cart', JSON.stringify(cart));
+
+            // Меняем кнопку на "Перейти в корзину"
+            button.textContent = 'Перейти в корзину';
+            button.classList.add('added-to-cart');
+            button.removeEventListener('click', addToCartHandler);
+            button.addEventListener('click', () => {
+                window.location.href = 'cart.html';
             });
         });
+    });
+});
+localStorage.setItem('cart', JSON.stringify(cart));
+console.log('Данные сохранены в localStorage:', JSON.parse(localStorage.getItem('cart')));
     </script>
 </body>
 </html>

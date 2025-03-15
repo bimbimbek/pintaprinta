@@ -41,33 +41,31 @@
             </div>
         </div>
     </section>
+    
+    <script src="script.js"></script>
 
-    <!-- Модальное окно оформления заказа -->
-    <div class="modal" id="checkout-modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h2>Оформление заказа</h2>
-            <form id="checkout-form">
-                <div class="form-group">
-                    <label for="name">Имя:</label>
-                    <input type="text" id="name" name="name" required>
-                </div>
-                <div class="form-group">
-                    <label for="email">Электронная почта:</label>
-                    <input type="email" id="email" name="email" required>
-                </div>
-                <div class="form-group">
-                    <label for="phone">Номер телефона:</label>
-                    <input type="tel" id="phone" name="phone" required>
-                </div>
-                <div class="form-group">
-                    <input type="checkbox" id="terms" name="terms" required>
-                    <label for="terms">Я ознакомлен с правилами и условиями</label>
-                </div>
-                <button type="submit" class="btn">Оплатить</button>
-            </form>
-        </div>
+ <!-- Модальное окно оформления заказа -->
+<div class="modal" id="checkout-modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Оформление заказа</h2>
+        <form id="checkout-form">
+            <div class="form-group">
+                <label for="name">Имя:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="phone">Номер телефона:</label>
+                <input type="tel" id="phone" name="phone" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Электронная почта:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <button type="submit" class="btn">Перейти к оплате</button>
+        </form>
     </div>
+</div>
 
     <!-- Подвал -->
     <footer class="footer">
@@ -268,5 +266,6 @@ checkoutBtn.addEventListener('click', async () => {
     }
 });
     </script>
+    <script src="script.js"></script>
 </body>
 </html>
