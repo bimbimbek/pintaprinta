@@ -238,7 +238,6 @@ console.log('Данные из localStorage:', cart);
 document.addEventListener('DOMContentLoaded', () => {
     console.log('Скрипт cart.js загружен!');
 
-    const cartItemsContainer = document.getElementById('cart-items');
     const totalPriceElement = document.getElementById('total-price');
 
     // Проверка, что элементы найдены
@@ -300,7 +299,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const checkoutBtn = document.getElementById('checkout-btn');
     const checkoutModal = document.getElementById('checkout-modal');
     const closeModalBtn = checkoutModal.querySelector('.close');
-    const checkoutForm = document.getElementById('checkout-form');
+   const checkoutForm = document.getElementById('checkout-form');
+if (checkoutForm) {
+    checkoutForm.addEventListener('submit', async (e) => {
+        // Ваш код...
+    });
+} else {
+    console.error('Элемент checkout-form не найден!');
+}
 
     // Получаем данные из localStorage
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
@@ -387,7 +393,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Обработка формы оформления заказа
-    checkoutForm.addEventListener('submit', async (e) => {
+    document.getElementById('checkout-form').addEventListener('submit', async (e) => {
         e.preventDefault();
 
         // Получаем данные из формы
@@ -397,7 +403,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Отправляем запрос на сервер для создания платежа
         try {
-            const response = await fetch('https://ваш-сервер.vercel.app/create-payment', {
+            const response = await fetch(' https://5576-77-221-149-12.ngrok-free.app/create-payment', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
