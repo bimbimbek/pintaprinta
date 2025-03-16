@@ -1,0 +1,7 @@
+{
+    "name": "pintaprinta",
+    "version": "1.0.0",
+    "dependencies": {
+      "@a2seven/yoo-checkout": "^1.0.0"
+    }
+  }
