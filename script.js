@@ -403,7 +403,7 @@ if (checkoutForm) {
 
         // Отправляем запрос на сервер для создания платежа
         try {
-            const response = await fetch(' https://5576-77-221-149-12.ngrok-free.app/create-payment', {
+            const response = await fetch('https://ac35-77-221-149-12.ngrok-free.app', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -433,3 +433,12 @@ if (checkoutForm) {
     renderCart();
 });
 console.log('Скрипт cart.js загружен!');
+
+document.getElementById('checkout-form').addEventListener('submit', function (e) {
+    const termsCheckbox = document.getElementById('terms');
+
+    if (!termsCheckbox.checked) {
+        e.preventDefault(); // Остановить отправку формы
+        alert('Пожалуйста, подтвердите согласие с Пользовательским соглашением.');
+    }
+});

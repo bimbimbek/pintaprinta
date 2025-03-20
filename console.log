@@ -1,0 +1,4 @@
+button.addEventListener('click', () => {
+    console.log('Кнопка "Перейти в корзину" нажата'); // Проверка, что обработчик срабатывает
+    window.location.href = 'cart.html'; // Переход на страницу корзины
+});
