@@ -105,10 +105,14 @@ body {
     text-decoration: none;
     font-weight: 500;
     transition: background 0.3s ease;
+    transition: all 0.3s ease; /* Плавный переход */
 }
 
 .btn:hover {
     background: #45a049;
+    transform: scale(1.05); /* Увеличение на 5% */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Тень */
+    background-color: #4CAF50; /* Изменение цвета фона */
 }
 
 /* О нас */
@@ -432,6 +436,7 @@ body {
 .product-overlay .btn {
     background: white;
     color: var(--primary);
+    transition: all 0.3s ease; /* Плавный переход */
 }
 
 .product-title {
@@ -560,6 +565,9 @@ body {
 
 .item-actions .btn:hover {
     background: #ff1a1a;
+    transform: scale(1.05); /* Увеличение на 5% */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Тень */
+    background-color: #4CAF50; /* Изменение цвета фона */
 }
 
 .cart-summary {
@@ -580,6 +588,7 @@ body {
 
 .cart-actions .btn {
     padding: 0.75rem 1.5rem;
+    transition: all 0.3s ease; /* Плавный переход */
 }
 
 .continue-shopping {
@@ -1066,4 +1075,34 @@ checkout-form textarea {
 
 .terms-link:hover {
     color: var(--primary); /* Зеленый цвет при наведении */
+}
+
+/* Стили для логотипа и надписи */
+.logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px; /* Расстояние между логотипом и текстом */
+    transition: transform 0.3s ease;
+}
+
+.logo-img {
+    height: 3em;
+    transition: transform 0.3s ease;
+}
+
+.logo-text {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.3em;
+    color: black;
+    transition: transform 0.3s ease;
+}
+
+/* Анимация при наведении на логотип */
+.logo-container:hover .logo-text {
+    transform: scale(1.1); /* Увеличение текста */
+}
+
+.logo-container:hover .logo-img {
+    transform: rotate(45deg); /* Поворот логотипа */
 }

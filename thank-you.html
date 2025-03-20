@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Спасибо за покупку! | PintaPrinta</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Montserrat:wght@600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <link rel="icon" type="image/png" href="pics/logo2.png">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            text-align: center;
+            position: relative;
+            overflow: auto; /* Разрешаем прокрутку */
+        }
+        #particles-js {
+            position: fixed; /* Фиксируем частицы */
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 0;
+        }
+        .thank-you-container {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            width: 100%;
+            animation: fadeIn 1s ease-in-out;
+            position: relative;
+            z-index: 1;
+            margin: 20px; /* Добавляем отступы */
+        }
+        h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.5em;
+            color: #4CAF50;
+            margin-bottom: 20px;
+        }
+        p {
+            font-size: 1.1em;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        .icon {
+            font-size: 3em;
+            color: #4CAF50;
+            margin-bottom: 20px;
+        }
+        .steps {
+            text-align: left;
+            margin: 20px 0;
+        }
+        .steps h3 {
+            font-size: 1.3em;
+            color: #4CAF50;
+            margin-bottom: 10px;
+        }
+        .steps ul {
+            list-style: none;
+            padding: 0;
+        }
+        .steps li {
+            margin-bottom: 10px;
+            font-size: 1em;
+        }
+        .steps li i {
+            color: #4CAF50;
+            margin-right: 10px;
+        }
+        .progress-bar {
+            margin: 30px 0;
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+        }
+        .progress-bar::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: #e0e0e0;
+            transform: translateY(-50%);
+            z-index: 0;
+        }
+        .progress-step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            z-index: 1;
+        }
+        .progress-step .step-icon {
+            width: 40px;
+            height: 40px;
+            background: #e0e0e0;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2em;
+            margin-bottom: 10px;
+            transition: background 0.3s ease;
+        }
+        .progress-step.active .step-icon {
+            background: #4CAF50;
+        }
+        .progress-step .step-label {
+            font-size: 0.9em;
+            color: #666;
+            text-align: center;
+        }
+        .recommendations {
+            margin: 30px 0;
+            text-align: left;
+        }
+        .recommendations h3 {
+            font-size: 1.3em;
+            color: #4CAF50;
+            margin-bottom: 15px;
+        }
+        .recommendations-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px; /* Уменьшаем отступы */
+        }
+        .product-card {
+            background: #f5f5f5;
+            padding: 10px; /* Уменьшаем отступы */
+            border-radius: 10px;
+            text-align: center;
+        }
+        .product-card img {
+            max-width: 80px; /* Уменьшаем размер картинок */
+            border-radius: 10px;
+        }
+        .product-card h4 {
+            font-size: 0.9em; /* Уменьшаем размер текста */
+            margin: 5px 0;
+        }
+        .product-card p {
+            font-size: 0.8em; /* Уменьшаем размер текста */
+            color: #666;
+        }
+        .faq {
+            margin-top: 30px;
+            text-align: left;
+        }
+        .faq h3 {
+            font-size: 1.3em;
+            color: #4CAF50;
+            margin-bottom: 15px;
+        }
+        .faq-item {
+            margin-bottom: 15px;
+        }
+        .faq-item h4 {
+            font-size: 1.1em;
+            margin-bottom: 5px;
+        }
+        .faq-item p {
+            font-size: 0.95em;
+            color: #666;
+        }
+        .cta-button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 20px;
+        }
+        .cta-button:hover {
+            background-color: #45a049;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <div id="particles-js"></div>
+    <div class="thank-you-container">
+        <div class="icon">
+            <i class="fas fa-check-circle"></i>
+        </div>
+        <h1>Спасибо за ваш заказ!</h1>
+        <p>Ваш заказ успешно оплачен. Мы уже начали его обработку. Ожидайте звонка или письма от нашего менеджера для уточнения деталей.</p>
+
+        <div class="steps">
+            <h3>Что дальше?</h3>
+            <ul>
+                <li><i class="fas fa-phone"></i> В течение 1 часа с вами свяжется наш менеджер для подтверждения заказа.</li>
+                <li><i class="fas fa-truck"></i> Доставка займет от 3 до 7 рабочих дней, в зависимости от вашего региона.</li>
+                <li><i class="fas fa-envelope"></i> Вы получите трек-номер для отслеживания заказа на вашу электронную почту.</li> 
+            </ul>
+        </div>
+
+        <!-- Прогресс-бар -->
+        <div class="progress-bar">
+            <div class="progress-step active">
+                <div class="step-icon" style="background: #8bf198; color: rgb(255, 255, 255);"><i class="fas fa-check" style="text-shadow: -1px -1px 0 #6baf74, 1px -1px 0 #6baf74, -1px 1px 0 #6baf74, 1px 1px 0 #6baf74;"></i></div>
+                <div class="step-label">Оплачено</div>
+            </div>
+            <div class="progress-step">
+                <div class="step-icon" style="background: #e0e0e0; color: black;"><i class="fas fa-user"></i></div>
+                <div class="step-label">Подтверждение</div>
+            </div>
+            <div class="progress-step">
+                <div class="step-icon" style="background: #e0e0e0; color: black;"><i class="fas fa-truck"></i></div>
+                <div class="step-label">Доставка</div>
+            </div>
+            <div class="progress-step">
+                <div class="step-icon" style="background: #e0e0e0; color: black;"><i class="fas fa-box-open"></i></div>
+                <div class="step-label">Получено</div>
+            </div>
+        </div>
+
+        <!-- FAQ -->
+        <div class="faq">
+            <h3>Часто задаваемые вопросы</h3>
+            <div class="faq-item">
+                <h4>Как отследить заказ?</h4>
+                <p>После отправки заказа вы получите трек-номер на вашу электронную почту. Вы можете отслеживать заказ через сайт транспортной компании.</p>
+            </div>
+            <div class="faq-item">
+                <h4>Можно ли изменить заказ?</h4>
+                <p>Вы можете изменить заказ до момента его отправки. Свяжитесь с нами по телефону или электронной почте.</p>
+            </div>
+            <div class="faq-item">
+                <h4>Что делать, если товар не подошел?</h4>
+                <p>Вы можете вернуть товар в течение 14 дней с момента получения. Подробности в разделе <a href="terms.html">Пользовательское соглашение</a>.</p>
+            </div>
+        </div>
+
+        <!-- Рекомендации (перенесены вниз) -->
+        <div class="recommendations">
+            <h3>Рекомендуем также</h3>
+            <div class="recommendations-grid">
+                <div class="product-card">
+                    <img src="pics/pants.png" alt="Штаны">
+                    <h4>Штаны с принтом</h4>
+                    <p>от ₽2000</p>
+                </div>
+                <div class="product-card">
+                    <img src="pics/jacket.png" alt="Куртка">
+                    <h4>Куртка с принтом</h4>
+                    <p>от ₽3500</p>
+                </div>
+            </div>
+        </div>
+
+        <button class="cta-button" onclick="window.location.href='index.html'">Вернуться на главную</button>
+    </div>
+
+    <script>
+        // Инициализация частиц
+        particlesJS('particles-js', {
+    "particles": {
+        "number": {
+            "value": 80,
+            "density": {
+                "enable": true,
+                "value_area": 800
+            }
+        },
+        "color": {
+            "value": "#4CAF50"
+        },
+        "shape": {
+            "type": "circle"
+        },
+        "opacity": {
+            "value": 0.5,
+            "random": false,
+            "anim": {
+                "enable": false,
+                "speed": 1,
+                "opacity_min": 0.1,
+                "sync": false
+            }
+        },
+        "size": {
+            "value": 3,
+            "random": true,
+            "anim": {
+                "enable": false,
+                "speed": 40,
+                "size_min": 0.1,
+                "sync": false
+            }
+        },
+        "line_linked": {
+            "enable": true,
+            "distance": 150,
+            "color": "#4CAF50",
+            "opacity": 0.4,
+            "width": 1
+        },
+        "move": {
+            "enable": true,
+            "speed": 6,
+            "direction": "none",
+            "random": false,
+            "straight": false,
+            "out_mode": "out",
+            "bounce": false,
+            "attract": {
+                "enable": false,
+                "rotateX": 600,
+                "rotateY": 1200
+            }
+        }
+    },
+    "interactivity": {
+        "detect_on": "canvas",
+        "events": {
+            "onhover": {
+                "enable": true,
+                "mode": "repulse"
+            },
+            "onclick": {
+                "enable": true,
+                "mode": "push"
+            },
+            "resize": true
+        },
+        "modes": {
+            "repulse": {
+                "distance": 100,
+                "duration": 0.4
+            },
+            "push": {
+                "particles_nb": 4
+            }
+        }
+    },
+    "retina_detect": true
+});
+    </script>
+</body>
+</html>

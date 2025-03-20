@@ -403,7 +403,7 @@ if (checkoutForm) {
 
         // Отправляем запрос на сервер для создания платежа
         try {
-            const response = await fetch('https://ac35-77-221-149-12.ngrok-free.app', {
+            const response = await fetch('https://ac35-77-221-149-12.ngrok-free.app/create-payment', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

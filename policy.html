@@ -49,6 +49,88 @@
             color: var(--dark);
         }
     </style>
+     <style>
+        /* Стили для шапки */
+        .header {
+            background: white;
+            padding: 10px 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: inherit;
+        }
+        .logo img {
+            height: 3em;
+            margin-right: 10px;
+        }
+        .logo span {
+            font-size: 1.3em;
+            color: black;
+        }
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: black;
+            font-size: 1em;
+            padding: 5px 10px;
+            transition: all 0.3s ease; /* Плавные изменения */
+            position: relative;
+        }
+        /* Анимация для кнопок */
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #4CAF50; /* Цвет подчеркивания */
+            transition: width 0.3s ease; /* Плавное появление */
+        }
+        .nav-links a:hover::after {
+            width: 100%; /* Подчеркивание при наведении */
+        }
+        .nav-links a:hover {
+            color: #4CAF50; /* Изменение цвета текста */
+        }
+    </style>
+      <link rel="icon" type="image/png" href="pics/logo2.png">
+      <style>
+          .logo span {
+              display: inline-block;
+              transition: transform 0.3s ease; /* Плавное увеличение */
+          }
+      
+          .logo:hover span {
+              transform: scale(1.1); /* Увеличение на 10% */
+          }
+      </style>
+      <style>
+          .logo img {
+              transition: transform 0.3s ease; /* Плавный поворот */
+          }
+      
+          .logo:hover img {
+              transform: rotate(45deg); /* Поворот на 45 градусов */
+          }
+      </style>
 </head>
 <body>
     <!-- Шапка -->
@@ -65,6 +147,7 @@
             </div>
         </nav>
     </header>
+
 
     <!-- Основной контент -->
     <section class="policy">

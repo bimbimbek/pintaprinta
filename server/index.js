@@ -26,7 +26,7 @@ app.post('/create-payment', async (req, res) => {
             },
             confirmation: {
                 type: 'redirect',
-                return_url: 'https://bimbimbek.github.io/pintaprinta', // URL для возврата после оплаты
+                return_url: 'https://bimbimbek.github.io/pintaprinta/thank-you.html', // URL для возврата после оплаты
             },
             capture: true,
             description: description, // Описание платежа

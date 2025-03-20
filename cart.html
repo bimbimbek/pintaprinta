@@ -8,19 +8,81 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"></script>
+    <link rel="icon" type="image/png" href="pics/logo2.png">
+    <style>
+        /* Стили для шапки */
+        .header {
+            background: white;
+            padding: 10px 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: inherit;
+        }
+        .logo img {
+            height: 3em;
+            margin-right: 10px;
+        }
+        .logo span {
+            font-size: 1.3em;
+            color: black;
+        }
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: black;
+            font-size: 1em;
+            padding: 5px 10px;
+            transition: all 0.3s ease; /* Плавные изменения */
+            position: relative;
+        }
+        /* Анимация для кнопок */
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #4CAF50; /* Цвет подчеркивания */
+            transition: width 0.3s ease; /* Плавное появление */
+        }
+        .nav-links a:hover::after {
+            width: 100%; /* Подчеркивание при наведении */
+        }
+        .nav-links a:hover {
+            color: #4CAF50; /* Изменение цвета текста */
+        }
+    </style>
 </head>
 <body>
-    <!-- Шапка -->
     <header class="header">
         <nav class="nav">
-            <a href="index.html" class="logo" style="text-decoration: none; color: inherit;">
-                <img src="pics/logo.png" alt="PintaPrinta logo" style="height: 3em; vertical-align: middle; margin-right: 1px;">
-                <span style="display: inline-block; text-align: center; font-size: 1.3em; color: black;">PintaPrinta</span>
+            <a href="index.html" class="logo">
+                <img src="pics/logo.png" alt="PintaPrinta logo">
+                <span>PintaPrinta</span>
             </a>
             <div class="nav-links">
-                <a href="index.html" style="text-decoration: none; color: inherit;">Главная</a>
-                <a href="catalog.html" style="text-decoration: none; color: inherit;">Каталог</a>
-                <a href="cart.html" class="active" style="text-decoration: none; color: inherit;">Корзина</a>
+                <a href="index.html">Главная</a>
+                <a href="catalog.html">Каталог</a>
+                <a href="cart.html">Корзина</a>
             </div>
         </nav>
     </header>
